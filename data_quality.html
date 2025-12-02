@@ -2,46 +2,68 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Data Quality – Detailed Roman Urdu Notes</title>
+<title>Data Warehousing – Data Quality (Dark Mode, Detailed Notes)</title>
 <style>
-    body { font-family: Arial, sans-serif; line-height:1.6; margin:0; padding:20px; background:#1b1b1b; color:#e0e0e0; }
-    h1, h2, h3 { color:#ffcc00; }
-    pre { background:#2c2c2c; padding:10px; border-radius:6px; overflow-x:auto; color:#a0ffa0; }
-    .diagram { background:#2a2a2a; padding:10px; border-left:4px solid #66f; margin:10px 0; color:#fff; }
-    details { background:#262626; padding:10px; border:1px solid #555; border-radius:6px; margin:10px 0; }
-    summary { font-weight:bold; cursor:pointer; color:#ffa500; }
-    .flashcard { background:#333; padding:10px; border-radius:6px; margin:10px 0; color:#fff; }
-    a { color:#1e90ff; }
+    body {
+        font-family: Arial, sans-serif; 
+        line-height:1.6; 
+        padding:20px; 
+        max-width:900px; 
+        margin:auto; 
+        background:#121212; 
+        color:#e0e0e0;
+    }
+    h1, h2, h3 {color:#bb86fc;}
+    pre {background:#1e1e1e; padding:10px; border-radius:6px; overflow-x:auto; color:#c5c5c5;}
+    ul, ol {margin-left:20px;}
+    details {margin:10px 0; background:#1f1f1f; padding:10px; border-radius:5px;}
+    summary {font-weight:bold; cursor:pointer; color:#03dac6;}
+    .flashcard {
+        background:#1f1f1f; 
+        border:1px solid #333; 
+        padding:10px; 
+        margin:10px 0; 
+        border-radius:5px;
+    }
+    figure {margin:10px 0;}
+    figcaption {font-style:italic; font-size:0.9em; color:#a0a0a0;}
+    a {color:#03dac6; text-decoration:none;}
 </style>
 </head>
 <body>
 
-<h1>Data Warehousing – Data Quality (Detailed Modern Roman Urdu Notes)</h1>
-<p>Yeh notes lecture slides se carefully reconstruct kiye gaye hain, modern Roman Urdu me, detailed explanations ke saath, exam-friendly.</p>
+<h1>Data Warehousing – Data Quality (Dark Mode Notes)</h1>
+
+<p>Ye notes tumhare lecture slides "Data Quality (DQM)" ka <b>complete, detailed</b> version hain, ab dark mode me, exam-friendly aur mobile-friendly.</p>
 
 <hr>
 
-<h2>1. Quality Kya Hai?</h2>
+<h2>1. Quality ka Matlab</h2>
+
+<p><b>Formal Definitions:</b></p>
 <ul>
-    <li><b>Formal:</b> "Quality = requirements ko fulfill karna" (Crosby, 1979)</li>
-    <li><b>Webster:</b> "Degree of excellence" — kisi cheez ka kitna acha hona</li>
+    <li><b>P. Crosby (1979):</b> “Quality is conformance to requirements” → matlab cheez customer ki expectations ke mutabiq honi chahiye.</li>
+    <li><b>Webster Dictionary:</b> “Degree of excellence” → kisi cheez ka kitna excellent ya superior hona.</li>
 </ul>
 
 <h3>Auto Industry Example</h3>
-<div class="diagram">
-Slide me diagram nahi tha, lekin concept yeh hai:
-</div>
 <ul>
-    <li>Quality ka matlab hai sirf customer ki needs meet karna, exceed karna zaruri nahi.</li>
-    <li>Focus un features pe jo customer ki life easy aur comfortable banate hain (safety, fuel efficiency, comfort).</li>
-    <li>Auto industry me improvements ka effect turant measure hota hai: customer satisfaction barhta hai, complaints kam hoti hain.</li>
-    <li>Lesson: Quality ka concept universal hai — chahe car ho ya data.</li>
+    <li>Quality ka matlab sirf exceeding expectations nahi, balki <b>customer ki real needs meet karna</b> hai.</li>
+    <li>Quality me wo improvements shamil hain jo <b>customer ki life easy aur comfortable banate hain</b>.</li>
+    <li>Auto industry ka example isliye: yahan quality improvements ka effect turant nazar aata hai aur measurable hota hai.</li>
 </ul>
+
+<details>
+<summary>Slide me diagram</summary>
+<p>Slide me ek car aur uske features ka diagram tha jahan highlight kiya gaya ke quality ka focus customer ki needs par hai.</p>
+</details>
 
 <hr>
 
-<h2>2. Data Kya Hai?</h2>
-<p>Data har real-world entity ka <b>abstraction</b> hota hai. Example:</p>
+<h2>2. Data kya hai?</h2>
+<p>Har data kisi real-world entity ka <b>abstraction</b> hota hai.</p>
+
+<figure>
 <pre>
 Muhammad Khan
 Height = 5'8"
@@ -50,188 +72,195 @@ Gender = Male
 Age = 35 yrs
 Emp_ID = 440
 </pre>
-<p>Is se samajh aata hai ke data ka real-world reference hota hai, lekin wo hamesha digital / abstract form me hota hai.</p>
+<figcaption>Ek person ka data record diagram.</figcaption>
+</figure>
 
 <hr>
 
-<h2>3. Data Quality Kya Hai?</h2>
+<h2>3. Data Quality kya hai?</h2>
 <ul>
-    <li><b>Intrinsic Data Quality:</b> Data ki correctness ya accuracy</li>
-    <li><b>Realistic Data Quality:</b> Data ka business ke liye utility ya usefulness</li>
+    <li><b>Intrinsic Data Quality:</b> Data ka correctness ya accuracy.</li>
+    <li><b>Realistic Data Quality:</b> Data ka business ke liye utility/value.</li>
 </ul>
 
+<p><b>Example:</b> Agar employee ka height galat record hai → intrinsic quality low. Agar weight aur age HR decisions me kaam aa rahi hai → realistic quality high.</p>
+
 <hr>
 
-<h2>4. Data Quality aur Organizations</h2>
+<h2>4. Data Quality & Organizations</h2>
 <ul>
-    <li><b>Intelligent Learning Organization:</b> High-quality data = open, shared, value-adding resource</li>
-    <li><b>Functional Learning Organization:</b> Low-quality data = proprietary, cost-adding resource</li>
+    <li><b>Intelligent Learning Organization:</b> High-quality data shared resource hai aur value-add processes hain.</li>
+    <li><b>Functional Learning Organization:</b> Low-quality data proprietary hai aur cost-add processes hain.</li>
 </ul>
 
 <hr>
 
 <h2>5. Orr’s Laws of Data Quality</h2>
 <ol>
-    <li>Unused data correct nahi ho sakta.</li>
-    <li>Data quality use se define hoti hai, collection se nahi.</li>
-    <li>Data quality hamesha sabse strict use ke barabar ya us se kam hoti hai.</li>
-    <li>Purana system = zyada data quality problems.</li>
-    <li>Rare events jab hotay hain, unka impact zyada hota hai.</li>
+    <li>Unused data cannot be correct.</li>
+    <li>Data quality = function of use, not collection.</li>
+    <li>Data quality limited by most stringent use.</li>
+    <li>Data quality problems increase with system age.</li>
+    <li>Rare events are most damaging.</li>
 </ol>
 
 <hr>
 
 <h2>6. Total Quality Management (TQM)</h2>
 <ul>
-    <li>Sab log involve → systematic, continuous improvement</li>
-    <li>Customer-oriented approach</li>
-    <li>Include: Product quality, process control, quality assurance, improvement</li>
-    <li><b>Note:</b> Quality Assurance ≠ Quality Improvement</li>
+    <li>Systematic aur continuous improvement ka philosophy.</li>
+    <li><b>Customer-oriented:</b> Har improvement customer value increase kare.</li>
+    <li>Includes: Product quality, process control, quality assurance, quality improvement.</li>
+    <li>QA ≠ Quality Improvement</li>
 </ul>
 
 <hr>
 
 <h2>7. Cost of Fixing Data Quality</h2>
-<p>Defect <b>minimization</b> economical hai, <b>defect elimination</b> bohot mehnga hai.</p>
-<div class="diagram">
-Lowest Quality -----------------> Highest Quality (Exponential rise in cost)
-</div>
+<p>Defect minimize karna economical, defect eliminate karna expensive.</p>
+<figure>
+<pre>
+Lowest Quality ------------------> Highest Quality
+        (Cost rises exponentially)
+</pre>
+<figcaption>Exponential cost rise diagram.</figcaption>
+</figure>
 
-<h3>Cost Types:</h3>
+<hr>
+
+<h2>8. Cost of Data Quality Defects</h2>
 <ul>
-    <li>Controllable Costs: Recurring cost for fixing data errors</li>
-    <li>Resultant Costs: Internal/external failures, missed opportunities</li>
+    <li>Controllable Costs: analysis, correction, prevention</li>
+    <li>Resultant Costs: missed opportunities, failures</li>
     <li>Equipment & Training Costs</li>
 </ul>
 
 <hr>
 
-<h2>8. Critical Areas for Data Quality</h2>
+<h2>9. Where Data Quality is Critical?</h2>
 <ul>
-    <li>Marketing communication</li>
+    <li>Marketing communications</li>
     <li>Customer matching</li>
-    <li>Retail householding</li>
-    <li>Combining MIS systems after acquisition</li>
+    <li>Retail house-holding</li>
+    <li>MIS integration after acquisition</li>
 </ul>
 
 <hr>
 
-<h2>9. Characteristics (Dimensions) of Data Quality</h2>
+<h2>10. Data Quality Characteristics</h2>
 <ul>
-    <li><b>Accuracy:</b> Data me error kam hona</li>
-    <li><b>Completeness:</b> Required values available hon</li>
-    <li><b>Believability:</b> Data trustworthy hona chahiye</li>
-    <li><b>Appropriate Amount of Data:</b> Data quantity task ke liye sufficient</li>
-    <li><b>Timeliness:</b> Data up-to-date</li>
-    <li><b>Accessibility:</b> Easily retrievable</li>
-    <li><b>Objectivity:</b> Unbiased</li>
-    <li><b>Interpretability:</b> Clear meaning, units, symbols</li>
+    <li>Accuracy</li>
+    <li>Completeness</li>
+    <li>Believability</li>
+    <li>Appropriate Amount</li>
+    <li>Timeliness</li>
+    <li>Accessibility</li>
+    <li>Objectivity</li>
+    <li>Interpretability</li>
 </ul>
 
-<h3>Completeness vs Accuracy</h3>
-<p>Example: 95% accurate + 100% complete V/S 100% accurate + 95% complete → Decide based on tolerance, cost, business value, application.</p>
+<h3>Completeness vs Accuracy Example</h3>
+<p>95% accurate & 100% complete OR 100% accurate & 95% complete → application, tolerance, cost, business value par depend karta hai.</p>
 
 <hr>
 
-<h2>10. Quantifying Data Quality</h2>
-<p>Metrics aur formulas:</p>
+<h2>11. Data Quality Assessment Techniques</h2>
 <ul>
-    <li><b>Free-of-error ratio:</b> 1 - (errors / total)</li>
-    <li><b>Completeness ratio:</b> 1 - (incomplete items / total)</li>
-    <li><b>Consistency ratio:</b> 1 - (violations / total checks)</li>
+    <li>Simple Ratios: Free-of-error, completeness, consistency</li>
+    <li>Min-Max Technique: multiple values aggregation</li>
+    <li>Believability: compare with standard/experience</li>
+    <li>Timeliness: Max{0,1-C/V}</li>
+    <li>Accessibility: Max{0,1-Trd/Tru}</li>
 </ul>
-
-<h3>Min-Max Technique</h3>
-<p>Multiple value aggregation ke liye. Min → conservative, Max → liberal</p>
-
-<h3>Believability Example</h3>
-<pre>Min{0.8,0.7,0.6} = 0.6</pre>
-
-<h3>Appropriate Amount of Data Formula</h3>
-<pre>Min { Dp / Dn , Dn / Dp } 
-Dp = Data Provided
-Dn = Data Needed
-</pre>
-
-<h3>Timeliness Formula</h3>
-<pre>Max {0, 1 - C/V} 
-C = Age + DeliveryTime - InputTime
-V = Volatility (time data remains valid)</pre>
-
-<h3>Accessibility Formula</h3>
-<pre>Max {0, 1 - Trd / Tru} 
-Trd = Request to delivery time
-Tru = Useful duration of data
-</pre>
 
 <hr>
 
-<h2>11. Data Quality Validation Techniques</h2>
+<h2>12. Data Quality Validation Techniques</h2>
 <ul>
     <li>Referential Integrity (RI)</li>
     <li>Attribute Domain Validation</li>
     <li>Data Quality Rules</li>
-    <li>Histogram / Statistical Validation</li>
+    <li>Histogram Validation</li>
 </ul>
 
-<h3>RI Example</h3>
-<p>Outstanding payments without matching customer_ID → DWH me weekly/monthly check hoti hai.</p>
+<h3>Referential Integrity Example</h3>
+<p>Outstanding payments without customer_ID → orphan records. Weekly/monthly check in DWH.</p>
 
-<h3>Attribute Domain Steps</h3>
-<ol>
-    <li>Count domain value occurrences</li>
-    <li>Compare with valid set</li>
-    <li>Investigate exceptions → cause + impact</li>
-</ol>
-
-<h3>Histogram Example</h3>
-<div class="diagram">
-Spike of centurions (Age ≥100) → Outlier detection, normal environment me yeh rare hote hain
-</div>
+<h3>Business vs Performance Case</h3>
+<ul>
+    <li>Business: actual amount per year/region</li>
+    <li>Performance: enforcing RI costly, constraints off/discard violating records</li>
+</ul>
 
 <hr>
 
-<h2>12. Data Quality Management Process (TDQM)</h2>
+<h2>13. Attribute Domain Validation</h2>
 <ol>
-    <li>Establish DQ Environment (Managers + Developers)</li>
-    <li>Scope Projects & Develop Implementation Plans (Goals, Tasks, Milestones, Resources)</li>
-    <li>Implement: Define → Measure → Analyze → Improve</li>
-    <li>Evaluate Methods → Check improvement & modify if needed</li>
+    <li>Step 1: Count occurrences of each domain value.</li>
+    <li>Step 2: Compare actual vs valid values.</li>
+    <li>Step 3: Investigate exceptions (cause + impact).</li>
 </ol>
 
 <hr>
 
-<h2>13. Improving Data Quality</h2>
+<h2>14. Statistical Validation – Histogram</h2>
+<figure>
+<pre>
+1901 ------------------------ 2000
+|---- Spike of centurions ----|
+</pre>
+<figcaption>Outlier detection example: age ≥100 years spike.</figcaption>
+</figure>
+
+<hr>
+
+<h2>15. Data Quality Management (TDQM) Process</h2>
+<ol>
+    <li>Establish DQ Environment: IS managers, developers, professionals</li>
+    <li>Scope Projects & Implementation Plan: goals, baseline, schedule, resources</li>
+    <li>Implement Projects: Define, Measure, Analyze, Improve</li>
+    <li>Evaluate Methods: assess improvement, modify, adopt as new business approach</li>
+</ol>
+
+<hr>
+
+<h2>16. Improving Data Quality</h2>
 <ul>
-    <li>Process improvements</li>
-    <li>System upgrades</li>
-    <li>Policy & Procedure changes</li>
-    <li>Data Design fixes</li>
+    <li>Process</li>
+    <li>System</li>
+    <li>Policy & Procedure</li>
+    <li>Data Design</li>
 </ul>
 
 <hr>
 
-<h2>14. Common Misconceptions</h2>
+<h2>17. Misconceptions</h2>
 <ul>
-    <li>Data fix karna problem solve nahi karta — problem usage me hoti hai</li>
-    <li>Data Quality sirf IT ka kaam nahi — Business + IT joint effort</li>
-    <li>One-time tool purchase solution nahi hai</li>
+    <li>Data fixable independently → galat</li>
+    <li>DQ = IT problem → galat, company-wide responsibility</li>
+    <li>Cleansing tools ≠ complete solution</li>
+    <li>Quality vs ROI → joint business & IT effort</li>
 </ul>
 
 <hr>
 
-<h2>15. GIGO</h2>
-<p><b>Garbage In → Garbage Out</b> → Agar input galat hoga to output bhi galat hoga</p>
+<h2>18. GIGO</h2>
+<p>Garbage In, Garbage Out → input galat hoga to output bhi galat hoga.</p>
 
 <hr>
 
-<h2>Quick Revision Flashcards</h2>
-<div class="flashcard"><b>Q:</b> Quality ki formal definition? <br><b>A:</b> Conformance to requirements</div>
-<div class="flashcard"><b>Q:</b> Intrinsic vs Realistic Data Quality? <br><b>A:</b> Intrinsic = accuracy, Realistic = business usefulness</div>
-<div class="flashcard"><b>Q:</b> TQM main sabse important kya hai? <br><b>A:</b> Continuous improvement & customer orientation</div>
-<div class="flashcard"><b>Q:</b> Timeliness formula? <br><b>A:</b> Max {0, 1 - C/V}</div>
-<div class="flashcard"><b>Q:</b> RI ka purpose? <br><b>A:</b> Orphan records detect karna DWH me</div>
-<div class="flashcard"><b>Q:</b> GIGO meaning? <br><b>A:</b> Garbage In → Garbage Out</div>
+<h1>Quick Revision – Flashcards</h1>
+<div class="flashcard"><b>Q:</b> Accuracy kya hai? <br><b>A:</b> Error-free data.</div>
+<div class="flashcard"><b>Q:</b> Completeness kya hai? <br><b>A:</b> Required fields present honi chahiye.</div>
+<div class="flashcard"><b>Q:</b> Timeliness kya measure karta hai? <br><b>A:</b> Kitna up-to-date data hai.</div>
+<div class="flashcard"><b>Q:</b> Believability kya hai? <br><b>A:</b> Data credible hai.</div>
+<div class="flashcard"><b>Q:</b> RI kahan important hai? <br><b>A:</b> DWH me orphan records detect karne ke liye.</div>
+<div class="flashcard"><b>Q:</b> Histogram kis liye use hota hai? <br><b>A:</b> Outlier detection.</div>
+<div class="flashcard"><b>Q:</b> Orr’s Law #1? <br><b>A:</b> “Unused data cannot be correct.”</div>
+<div class="flashcard"><b>Q:</b> GIGO? <br><b>A:</b> Garbage In → Garbage Out.</div>
+
+<hr>
+<h2>End of Notes</h2>
 
 </body>
 </html>

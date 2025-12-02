@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Warehousing Methodologies — Exam Notes (Roman Urdu, Dark Mode)</title>
+<style>
+  :root{
+    --bg:#0b1020;
+    --card:#0f1724;
+    --muted:#9aa6b2;
+    --accent:#7bd389;
+    --accent2:#7aa6ff;
+    --text:#e6eef6;
+    --border:#16202b;
+  }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    margin:0;
+    padding:24px;
+    line-height:1.6;
+  }
+  .container{max-width:980px;margin:auto;}
+  header h1{color:var(--accent2);margin:0 0 6px 0;font-size:1.6rem;}
+  header p{color:var(--muted);margin:0 0 18px 0;}
+  section{background:linear-gradient(180deg, var(--card), #0d1320); padding:16px; border-radius:10px; border:1px solid var(--border); margin-bottom:14px;}
+  h2{color:var(--accent); margin:0 0 8px 0; font-size:1.1rem;}
+  h3{color:var(--accent2); margin:10px 0 6px 0; font-size:1rem;}
+  ul, ol {margin:8px 0 12px 20px;}
+  li {margin:6px 0;}
+  pre{background:#07101a;padding:10px;border-radius:8px;overflow:auto;border:1px solid #0b3340;color:var(--muted);font-size:0.95rem;}
+  table{width:100%;border-collapse:collapse;margin-top:10px;}
+  th,td{padding:8px;border:1px solid #12202a;text-align:left;font-size:0.95rem;}
+  th{background:#071824;color:var(--accent2);}
+  details{background:#071426;padding:10px;border-radius:8px;border:1px solid #0d2734;margin-top:8px;color:var(--muted);}
+  summary{font-weight:600; color:var(--accent2); cursor:pointer;}
+  .flash{background:#071620;border-left:4px solid var(--accent);padding:10px;border-radius:6px;color:var(--muted);margin-top:10px;}
+  .small{color:var(--muted);font-size:0.93rem;}
+  footer{color:var(--muted);font-size:0.9rem;margin-top:18px;text-align:center;}
+  @media (max-width:600px){
+    body{padding:14px;}
+    header h1{font-size:1.25rem;}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Data Warehousing (DWH) Methodologies — Exam Notes (Modern Roman Urdu)</h1>
+    <p class="small">Concise aur exam-focused notes — har section ka short explanation diye gaya hai. Dark mode friendly.</p>
+  </header>
+
+  <section>
+    <h2>1. DWH vs. Traditional IS</h2>
+    <p><b>Key point:</b> DWH project ko aam Information Systems se zyada <em>scientific research</em> jaisa samjho — requirements shuru mein clear nahin hoti aur bahut experiment/iteration chahiye hoti hai.</p>
+    <ul>
+      <li><b>Scientific nature:</b> Exploratory kaam — data exploration, modelling, aur hypothesis testing jaisa workflow.</li>
+      <li><b>Implication:</b> Plan flexible rakho — early requirements par full reliance khatarnaak ho sakta hai.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>2. Implementation Strategies</h2>
+    <p class="small">DWH build karne ke do aam approaches — dono ke pros/cons samajhna zaroori hai.</p>
+    <ol>
+      <li><b>Top-Down Approach</b>
+        <div class="small">Enterprise-level warehouse design pehle — phir data marts. Strong central design, consistency achi rehti hai lekin initial cost aur time zyada.</div>
+      </li>
+      <li><b>Bottom-Up Approach</b>
+        <div class="small">Chhote data marts banate hue integrate karte hain. Jaldi value milti hai, par integration aur global consistency after mein manage karni parti hai.</div>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>3. DWH & Software Engineering Models</h2>
+    <p class="small">DWH development me software-engineering kaafi models use hote hain — har model ki fit-alignment project ki clarity, risk aur time par depend karti hai.</p>
+
+    <h3>Waterfall Model</h3>
+    <ul>
+      <li>Sequential phases: Requirements → Design → Implementation → Testing → Deployment → Maintenance.</li>
+      <li>Best jab requirements stable hon.</li>
+      <li><div class="small">Exam tip: Yad rakho ke waterfall me feedback loop limited hota hai.</div></li>
+    </ul>
+    <pre>[Diagram: Waterfall — sequential boxes stacked]</pre>
+
+    <h3>Spiral Model</h3>
+    <ul>
+      <li>Actually multiple small waterfall cycles — har cycle me planning, risk analysis, engineering, evaluation.</li>
+      <li>Risk-oriented aur iterative — unclear requirements ke liye suitable.</li>
+      <li><div class="small">Exam tip: Spiral ko "risk-driven" model kehte hain kyunki har iteration risk ko identify aur reduce karta hai.</div></li>
+    </ul>
+    <pre>[Diagram: Spiral — iterations ka circular flow]</pre>
+
+    <h3>RAD & Agile</h3>
+    <ul>
+      <li>Iterative, prototyping-focused. Phases: scope → analyze → design → construct → test → review.</li>
+      <li>Automated tools aur rapid feedback cycles se development fast hoti hai.</li>
+      <li><div class="small">Exam tip: RAD prototypes user ki expectations jaldi clarify kar dete hain — lekin production-quality alag kaam hai.</div></li>
+    </ul>
+    <pre>[Diagram: Iterative loops with prototype deliveries]</pre>
+  </section>
+
+  <section>
+    <h2>4. 5 Keys to Successful Prototyping</h2>
+    <p class="small">Prototyping DWH projects me bohat important hai — exam me in 5 points pooche ja sakte hain.</p>
+    <ol>
+      <li><b>Behtareen Team:</b> DB programmers, designers, QA, decision-support specialists — lead by single manager. (Why? coordination simple rahega.)</li>
+      <li><b>Focus Group:</b> Novice + experienced users aur managers ka chhota group — continuous feedback deta rahega.</li>
+      <li><b>User Manual First:</b> Early UI + manual banane se users requirements clearly bata dete hain.</li>
+      <li><b>Tools:</b> Rapid-prototyping specific tools use karo — speed aur iteration main madad milegi.</li>
+      <li><b>Prototype ≠ Final:</b> Prototype sirf requirement discovery aur vision alignment ka tool hai — final app alag process se banega.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>5. Main Development Methodologies (Philosophies)</h2>
+    <p class="small">Teen mashhoor nazariye — har ek ka different emphasis hai (data vs business goals vs users).</p>
+
+    <table>
+      <tr><th>Methodology</th><th>Proponent</th><th>Short Focus</th></tr>
+      <tr>
+        <td><b>Data-Driven</b></td>
+        <td>Bill Inmon</td>
+        <td>Structure aur enterprise-wide data consistency pe focus; source-oriented design.</td>
+      </tr>
+      <tr>
+        <td><b>Goal-Driven (Kimball)</b></td>
+        <td>Ralph Kimball</td>
+        <td>Business processes & analytics pe focus; dimensional modeling & data marts.</td>
+      </tr>
+      <tr>
+        <td><b>User-Driven</b></td>
+        <td>Westerman (Wal-Mart)</td>
+        <td>Business strategy implementation aur user needs pe focus.</td>
+      </tr>
+    </table>
+
+    <div class="flash">
+      <b>Kimball 4-step (short):</b> choose business process → choose grain → choose dimensions → choose facts.
+    </div>
+  </section>
+
+  <section>
+    <h2>6. Project Start — Kahan se shuru karen?</h2>
+    <p class="small">Shuruwat se pehle ye sawalat clear karo — exam me inka zikr aksar hota hai.</p>
+    <ul>
+      <li><b>Problems:</b> DWH kaunse specific problem(s) solve karega? Problems precise, clear, testable honi chahiye.</li>
+      <li><b>Success Criteria:</b> Kaise measure karenge? (e.g., 20% growth ya decision time reduce hona).</li>
+      <li><b>Time & Money (Scope):</b> Budget aur schedule kaise manage karenge?</li>
+      <li><b>Skills:</b> Kaunse technical aur domain skills required hain?</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>7. DWH Lifecycle Model (General)</h2>
+    <p class="small">Typical iterative lifecycle — exam me order yad rakhna important hai.</p>
+    <ol>
+      <li><b>Design</b> — Architecture, models, scope.</li>
+      <li><b>Prototype</b> — Rapid implementation of core features for feedback.</li>
+      <li><b>Deploy</b> — Production rollout.</li>
+      <li><b>Operate</b> — Daily use, monitoring, support.</li>
+      <li><b>Enhance</b> — New features, scale, performance improvements.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>8. Kimball’s Business Dimensional Lifecycle (Goal Driven)</h2>
+    <p class="small">Kimball ka approach business-oriented hai — project management strong hona chahiye.</p>
+
+    <h3>1. Project Planning</h3>
+    <ul>
+      <li>Readiness check: sponsor, business motivation, feasibility, scope, culture.</li>
+      <li>Justify: cost vs benefit (ROI estimate).</li>
+      <li>Build team: strong PM + business partnership.</li>
+    </ul>
+
+    <h3>2. Business Requirement Definition</h3>
+    <ul>
+      <li>Requirement collection: documentation, interviews, observation, questionnaires.</li>
+      <li>Post-collection: Prioritization (what to build first).</li>
+      <li>Quadrant technique: prioritize by <i>Business Impact</i> vs <i>Feasibility</i>.</li>
+    </ul>
+
+    <h3>3. Design & Development Tracks (Parallel)</h3>
+    <ul>
+      <li><b>Technology track:</b> Architecture design, product selection, infra.</li>
+      <li><b>Data track:</b> Dimensional modelling, physical design, ETL (data staging).</li>
+      <li><b>Application track:</b> Analytic app specs, BI/report dev.</li>
+    </ul>
+
+    <h3>4. Deployment</h3>
+    <p class="small">Production launch — performance testing, go-live plan, rollback strategy.</p>
+
+    <h3>5. Maintenance & Growth</h3>
+    <p class="small">Continuous monitoring, adding data sources, scaling, feature enhancement.</p>
+  </section>
+
+  <section>
+    <h2>9. Requirements Gathering & Prioritization</h2>
+    <ul>
+      <li><b>Methods:</b> Documentation review, interviews, observation, research, questionnaires.</li>
+      <li><b>Quadrant Technique:</b> Requirements ko chart par rakh kar prioritize karo — High Impact / High Feasibility pe pehle kaam karo.</li>
+      <li class="small">Exam hint: Quadrant = simple 2x2 matrix (Impact vs Feasibility) — short aur common question.</li>
+    </ul>
+  </section>
+
+  <details>
+    <summary>Quick Revision — Short Exam Notes</summary>
+    <div style="padding-top:8px;">
+      <ul>
+        <li><b>DWH = research-like:</b> requirements ambiguous => iterate.</li>
+        <li><b>Top-down:</b> enterprise first; <b>Bottom-up:</b> marts first.</li>
+        <li><b>Models:</b> Waterfall (sequential), Spiral (risk-driven), RAD/Agile (iterative).</li>
+        <li><b>Prototyping keys:</b> good team, focus group, UI/manual first, tools, prototype not final.</li>
+        <li><b>Methodologies:</b> Inmon (data-driven), Kimball (goal-driven), Westerman (user-driven).</li>
+        <li><b>Kimball steps:</b> Plan → Requirements → Design/ETL/App → Deploy → Maintain.</li>
+      </ul>
+    </div>
+  </details>
+
+  <footer>
+    Notes prepared in Modern Roman Urdu — use these for quick revision. Good luck for your exam!
+  </footer>
+</div>
+</body>
+</html>

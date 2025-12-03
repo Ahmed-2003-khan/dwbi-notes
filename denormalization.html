@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DWBI Notes - Normalization, Denormalization & OLAP</title>
+
+<style>
+    body {
+        background: #0d0d0d;
+        color: #e6e6e6;
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+    }
+    h1, h2, h3 {
+        color: #4db8ff;
+        margin-top: 30px;
+    }
+    p {
+        margin: 10px 0;
+    }
+    ul, ol {
+        margin-left: 25px;
+    }
+    strong {
+        color: #fff;
+    }
+    .box {
+        background: #1a1a1a;
+        padding: 15px;
+        border-left: 4px solid #4db8ff;
+        margin: 15px 0;
+        border-radius: 4px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+    }
+    table th, table td {
+        border: 1px solid #333;
+        padding: 10px;
+        text-align: left;
+    }
+    table th {
+        background: #262626;
+        color: #4db8ff;
+    }
+    details {
+        background: #1a1a1a;
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin: 10px 0;
+    }
+    summary {
+        cursor: pointer;
+        font-weight: bold;
+        color: #4db8ff;
+    }
+    pre {
+        background: #1a1a1a;
+        padding: 10px;
+        border-radius: 4px;
+        overflow-x: auto;
+        border-left: 4px solid #4db8ff;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>DWBI Exam Notes (Dark Mode)  
+Normalization, Denormalization & OLAP</h1>
+
+<hr>
+
+<h2>1. Data Warehouse Types & Applications</h2>
+
+<h3>A. Types of Data Warehouse</h3>
+
+<ul>
+    <li><strong>Financial DWH:</strong> Pehla DWH hota hai, kyunki financial data stable & important hota hai.</li>
+    <li><strong>Telecom DWH:</strong> Bohat high-volume data (CDRs). Zyada data ko aggregate karke rakha jata hai.</li>
+</ul>
+
+<h3>B. Typical Applications</h3>
+
+<ul>
+    <li><strong>Fraud Detection:</strong> Patterns se fraud identify karna.</li>
+    <li><strong>Profitability Analysis:</strong> Kaun sa customer profitable hai.</li>
+    <li><strong>Targeted Marketing:</strong> Correct user ko correct offer.</li>
+</ul>
+
+<hr>
+
+<h2>2. Normalization</h2>
+
+<div class="box">
+<strong>Definition:</strong> Redundancy hatana aur anomalies ko fix karna.
+</div>
+
+<h3>Goals</h3>
+<ul>
+    <li>Data repetition remove karna.</li>
+    <li>Data anomalies ko avoid karna.</li>
+</ul>
+
+<h3>Anomalies</h3>
+<ul>
+    <li><strong>Insert Anomaly:</strong> Kuch data na ho to insert nahi hota.</li>
+    <li><strong>Delete Anomaly:</strong> Ek record delete karo, important data bhi delete ho jaye.</li>
+    <li><strong>Update Anomaly:</strong> Har jagah update na ho to mismatch.</li>
+</ul>
+
+<h3>Normalization Forms</h3>
+
+<ul>
+    <li><strong>1NF:</strong> Atomic values only. Repeating groups nahi.</li>
+    <li><strong>2NF:</strong> No partial dependency (Composite key dependency issue solved).</li>
+    <li><strong>3NF:</strong> No transitive dependency.</li>
+</ul>
+
+<hr>
+
+<h2>3. Denormalization</h2>
+
+<div class="box">
+<strong>Definition:</strong> Performance improve karne ke liye jaan-boojh kar duplication allow karna.
+<br>“It is not chaos — it is a controlled crash.”
+</div>
+
+<h3>Why Denormalization?</h3>
+
+<ul>
+    <li>Joins kam ho jate hain → query fast.</li>
+    <li>DWH mein speed zyada important hoti hai.</li>
+</ul>
+
+<h3>5 Denormalization Techniques</h3>
+
+<table>
+    <tr>
+        <th>#</th>
+        <th>Technique</th>
+        <th>Explanation (Roman Urdu)</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Collapsing Tables</td>
+        <td>1:1 ya M:M tables ko merge kar dena.</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Splitting Tables</td>
+        <td>Horizontal (rows) & Vertical (columns) splitting.</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Pre-Joining</td>
+        <td>Frequently joined tables ko merge kar dena.</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Adding Redundant Columns</td>
+        <td>Join se bachne ke liye duplicate info add karna.</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Derived Attributes</td>
+        <td>Calculated values ko store kar lena (e.g., Age, Total Sales).</td>
+    </tr>
+</table>
+
+<hr>
+
+<h2>4. OLAP (Online Analytical Processing)</h2>
+
+<div class="box">
+OLAP = Fast analytical processing for decision-making.
+</div>
+
+<h3>OLTP vs OLAP</h3>
+
+<table>
+<tr>
+<th>Feature</th>
+<th>OLTP</th>
+<th>OLAP</th>
+</tr>
+<tr>
+<td>Data Level</td><td>Detailed</td><td>Summarized</td>
+</tr>
+<tr>
+<td>Operations</td><td>Insert/Update/Delete</td><td>Bulk Read</td>
+</tr>
+<tr>
+<td>User</td><td>Clerks</td><td>Managers</td>
+</tr>
+<tr>
+<td>Data Age</td><td>Current</td><td>Historical</td>
+</tr>
+<tr>
+<td>Size</td><td>GBs</td><td>TBs+</td>
+</tr>
+</table>
+
+<h3>FASMI Test</h3>
+<ul>
+    <li><strong>F:</strong> Fast (5 seconds).</li>
+    <li><strong>A:</strong> Analysis capable.</li>
+    <li><strong>S:</strong> Shared & Secure.</li>
+    <li><strong>M:</strong> Multidimensional.</li>
+    <li><strong>I:</strong> Information access full.</li>
+</ul>
+
+<h3>MOLAP + Cube Operations</h3>
+
+<ul>
+    <li><strong>Drill Down:</strong> Year → Month.</li>
+    <li><strong>Roll Up:</strong> Month → Year.</li>
+    <li><strong>Slice & Dice:</strong> Particular segment select karna.</li>
+    <li><strong>Pivot:</strong> View rotate karna.</li>
+</ul>
+
+<div class="box">
+<strong>Pros:</strong> Instant response.  
+<strong>Cons:</strong> Heavy storage if sparse.
+</div>
+
+<hr>
+
+<h2>Quick Revision (Flashcards)</h2>
+
+<details>
+<summary>Normalization ka main goal?</summary>
+<div class="box">Redundancy aur anomalies ko hatana.</div>
+</details>
+
+<details>
+<summary>Denormalization kab use hoti hai?</summary>
+<div class="box">Jab speed & performance critical ho, jaise DWH.</div>
+</details>
+
+<details>
+<summary>OLAP ka main feature?</summary>
+<div class="box">Multi-dimensional fast analytics (Cubes).</div>
+</details>
+
+</body>
+</html>

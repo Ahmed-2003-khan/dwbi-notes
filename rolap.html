@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ROLAP & Dimensional Modeling - Exam Notes (Roman Urdu)</title>
+<style>
+    body {
+        background:#0d1117;
+        color:#e6edf3;
+        font-family: Arial, sans-serif;
+        line-height:1.6;
+        padding:20px;
+        max-width:800px;
+        margin:auto;
+    }
+    h1, h2, h3 {
+        color:#58a6ff;
+        margin-top:30px;
+    }
+    pre {
+        background:#161b22;
+        padding:10px;
+        border-radius:5px;
+        overflow-x:auto;
+    }
+    code { color:#ffae57; }
+    ul, ol { padding-left:20px; }
+    table {
+        width:100%;
+        border-collapse:collapse;
+        margin:20px 0;
+    }
+    table th, table td {
+        border:1px solid #30363d;
+        padding:10px;
+        text-align:left;
+    }
+    table th {
+        background:#161b22;
+        color:#58a6ff;
+    }
+    hr {
+        border:0;
+        border-top:1px solid #30363d;
+        margin:40px 0;
+    }
+</style>
+</head>
+<body>
+
+<h1>📚 Exam Notes: ROLAP & Dimensional Modeling (Roman Urdu)</h1>
+
+<h2>1. ROLAP (Relational OLAP) Kya Hai?</h2>
+<p><b>Definition:</b> ROLAP ka matlab hai <b>Relational Online Analytical Processing</b>. Is approach mein OLAP data ko <b>Relational Databases (RDBMS)</b> mein store kiya jata hai.</p>
+
+<h3>ROLAP Kyun Use Karte Hain?</h3>
+<p>MOLAP ko ek badi problem hoti hai — <b>Curse of Dimensionality</b>. Jab data bohot zyada ho jaye to MOLAP slow ho jata hai.</p>
+
+<ul>
+    <li><b>Scalability:</b> ROLAP bohot large data handle kar sakta hai.</li>
+    <li><b>Aggregate Awareness:</b> Pre-built summary tables ka use karke fast querying hoti hai.</li>
+</ul>
+
+<h3>ROLAP as a "Cube"</h3>
+<p>ROLAP mein cube physical form mein nahi hota — <b>Fact Table</b> ko ek <i>"unrolled cube"</i> samajhna chahiye.</p>
+<p>Data rows/columns ki form mein hota hai, lekin logically multidimensional analysis ho raha hota hai.</p>
+
+<hr>
+
+<h2>2. ROLAP mein Cube Kaise Banta Hai? (SQL Implementation)</h2>
+<p>Agar aap Product × Month × Sales analyze karna chahte hain to normal SQL mein multiple queries likhni padti hain.</p>
+
+<ul>
+    <li>Total sales per Product & Month</li>
+    <li>Row totals</li>
+    <li>Column totals</li>
+</ul>
+
+<p><b>Problem:</b> Dimensions barhne par queries exponential ho jati hain → bohot slow.</p>
+
+<h3>Solution: <code>GROUP BY CUBE</code> Clause</h3>
+
+<pre><code>GROUP BY CUBE (v1, v2, v3)</code></pre>
+
+<p><b>Fayda:</b> Saari combinations ek hi query mein generate ho jati hain.</p>
+
+<hr>
+
+<h2>3. ROLAP Issues (Exam Important)</h2>
+
+<ol>
+    <li><b>Maintenance Issue:</b> Summary tables ko frequently update karna parta hai.</li>
+    <li><b>Storage Explosion:</b> Har cheez aggregate karne se size hadd se zyada barh jata hai.</li>
+    <li><b>Non-Standard Hierarchies:</b> Dimensions hamesha linear nahi hote.  
+        <br>Example: “Green items” → fridge bhi ho sakta, washing machine bhi.
+    </li>
+    <li><b>Conventions Issue:</b> Calendar vs Fiscal, Week start (Sunday ya Monday?) — ROLAP design ko confuse karta hai.</li>
+</ol>
+
+<hr>
+
+<h2>4. Other OLAP Architectures</h2>
+
+<h3>HOLAP (Hybrid OLAP)</h3>
+<ul>
+    <li>MOLAP + ROLAP ka hybrid.</li>
+    <li>Detailed data RDBMS mein, aggregates MOLAP cube mein.</li>
+</ul>
+
+<h3>DOLAP (Desktop OLAP)</h3>
+<ul>
+    <li>Cube ka ek chhota hissa user ke laptop par download ho jata hai.</li>
+    <li>Local/offline analysis possible hota hai.</li>
+</ul>
+
+<hr>
+
+<h2>5. Dimensional Modeling (DM) vs ER Modeling</h2>
+
+<h3>ER Modeling (Old OLTP Systems)</h3>
+<ul>
+    <li>Bohot complex “Spider web structure”.</li>
+    <li>Reporting ke liye joins bohot slow → <b>O(n²)</b>.</li>
+    <li>Data store easy, analyze difficult.</li>
+</ul>
+
+<h3>Dimensional Modeling (DM)</h3>
+<ul>
+    <li>DSS/Decision Making ke liye design.</li>
+    <li>Center mein <b>Fact Table</b>, surrounding mein <b>Dimension Tables</b>.</li>
+    <li>Fact table → multi-part key, Dimensions → single key.</li>
+</ul>
+
+<h3>ER vs DM (Comparison)</h3>
+
+<table>
+    <tr>
+        <th>Feature</th>
+        <th>ER Modeling</th>
+        <th>Dimensional Modeling</th>
+    </tr>
+    <tr>
+        <td>Purpose</td>
+        <td>Transaction optimize</td>
+        <td>Analysis optimize</td>
+    </tr>
+    <tr>
+        <td>Structure</td>
+        <td>Complex & micro-relationships</td>
+        <td>Simple & macro-relationships</td>
+    </tr>
+    <tr>
+        <td>Visibility</td>
+        <td>Spider-web like</td>
+        <td>Star-like, easy</td>
+    </tr>
+    <tr>
+        <td>Joins</td>
+        <td>Too many joins (slow)</td>
+        <td>Few joins (fast)</td>
+    </tr>
+</table>
+
+<hr>
+
+<h2>6. Star Schema (Core of DM)</h2>
+
+<h3>Structure</h3>
+<ol>
+    <li><b>Fact Table:</b> Numeric measures (Sales, Quantity) + foreign keys.</li>
+    <li><b>Dimension Tables:</b> Descriptive attributes (Product, Date, Store).</li>
+</ol>
+
+<h3>Benefits</h3>
+<ul>
+    <li>Simple → Business users easily understand.</li>
+    <li>Fast queries due to fewer joins.</li>
+    <li>De-normalization for performance.</li>
+</ul>
+
+<hr>
+
+<h2>💡 Quick Exam Summary</h2>
+<ul>
+    <li><b>ROLAP:</b> Scalable, relational DB based, maintenance/storage challenges.</li>
+    <li><b>CUBE Clause:</b> Saare groupings ek hi query mein.</li>
+    <li><b>ER Model:</b> Data entry ke liye best, analysis ke liye worst.</li>
+    <li><b>Dimensional Model:</b> Star schema = Best for reporting.</li>
+</ul>
+
+</body>
+</html>

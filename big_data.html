@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Big Data Warehouse — Exam Notes (Modern Roman Urdu, Dark Mode)</title>
+<style>
+  :root{
+    --bg:#07101a;
+    --panel:#0b1924;
+    --muted:#9fb0bd;
+    --accent:#7aa6ff;
+    --accent2:#7bd389;
+    --text:#e6eef6;
+    --card-border:#123043;
+  }
+  html,body{height:100%;margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;line-height:1.6}
+  .wrap{max-width:980px;margin:20px auto;padding:20px;background:linear-gradient(180deg,var(--panel),#07121a);border-radius:12px;border:1px solid var(--card-border);box-shadow:0 6px 30px rgba(2,8,15,0.6)}
+  header h1{margin:0;font-size:1.5rem;color:var(--accent);letter-spacing:0.2px}
+  header p{margin:6px 0 16px;color:var(--muted);font-size:0.95rem}
+  section{margin:14px 0;padding:14px;background:transparent;border-radius:8px}
+  h2{color:var(--accent2);margin:0 0 8px;font-size:1.1rem}
+  h3{color:var(--accent);margin:8px 0 6px;font-size:1rem}
+  ul,ol{margin:8px 0 12px 20px}
+  li{margin:6px 0}
+  .muted{color:var(--muted);font-size:0.95rem}
+  pre{background:#081823;padding:12px;border-radius:8px;border:1px solid #0a2b36;color:var(--muted);overflow:auto;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace}
+  table{width:100%;border-collapse:collapse;margin-top:10px}
+  th,td{padding:10px;border:1px solid #12343e;text-align:left;font-size:0.95rem}
+  th{background:#061622;color:var(--accent)}
+  .tip{background:#071b14;border-left:4px solid var(--accent2);padding:10px;border-radius:6px;color:var(--muted);margin-top:10px}
+  details{background:#071822;padding:10px;border-radius:8px;border:1px solid #0d2b36;color:var(--muted)}
+  summary{font-weight:600;color:var(--accent);cursor:pointer}
+  footer{margin-top:18px;color:var(--muted);font-size:0.92rem;text-align:center}
+  @media (max-width:600px){.wrap{padding:14px}header h1{font-size:1.2rem}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Big Data Warehouse — Exam Notes (Modern Roman Urdu)</h1>
+      <p class="muted">Concise, exam-focused notes — Roman Urdu. Har section ka short explanation aur exam tips included.</p>
+    </header>
+
+    <section>
+      <h2>1. Introduction: The GAP (Gap Kya Hai?)</h2>
+      <p class="muted">Organizations ke paas ek <b>Traditional Data Warehouse</b hota hai jo structured data handle karta hai. Lekin Big Data ki wajah se ek <b>gap</b paida hua hai — matlab current system aur desired Big Data-ready system ke beech farq.</p>
+      <ul>
+        <li><b>Gap:</b> Traditional DW ke limitations vs Big Data ki requirements (volume, variety, velocity).</li>
+        <li><b>Goal:</b> Traditional DW ko upgrade karna ya hybrid BDW banana jo naye data types (unstructured/semi-structured) ko handle kar sake.</li>
+      </ul>
+      <div class="tip"><b>Exam Tip:</b> "Gap" ko short me likho: <em>Traditional DW ≠ Big Data needs</em>. Example mention karna plus point hai.</div>
+    </section>
+
+    <section>
+      <h2>2. Approaches: Big Data aur BI ko Kaise Milayen?</h2>
+      <p class="muted">Jab Big Data technologies (e.g., Hadoop) BI me add hoti hain, do basic approaches hoti hain:</p>
+
+      <h3>A. Standalone (Alag se use karna)</h3>
+      <ul>
+        <li>Big Data tools (Hadoop/NoSQL) ko alag platform par use karte hain.</li>
+        <li>Inke apne query tools aur languages hoti hain (e.g., Hive, Spark SQL).</li>
+        <li>Business requirements aksar pre-defined nahi — pehle data explore hota hai.</li>
+      </ul>
+
+      <h3>B. Integrated / Hybrid (Big Data Warehouse)</h3>
+      <ul>
+        <li>Existing Data Warehouse ko support karne wala model (hybrid).</li>
+        <li>Big Data aur Traditional DW mil kar kaam karte hain — data interchange aur analysis dono hotay hain.</li>
+        <li>Fayda: scalability, cost-efficiency, aur richer analytics.</li>
+      </ul>
+      <div class="tip"><b>Exam Tip:</b> Agar question me "BI + Big Data" poocha ho to Integrated approach ka zikr karo aur short benefit list do.</div>
+    </section>
+
+    <section>
+      <h2>3. Hybrid Architectures (Most Important for Exam)</h2>
+      <p class="muted">Hybrid approaches exam me aksar diagram/logic ke roop me pooche jate hain — teen common types yaad rakho:</p>
+
+      <h3>Approach A — Hadoop as Staging</h3>
+      <ul>
+        <li>Hadoop sirf data ingestion / staging ke liye use hota hai.</li>
+        <li>Raw data pehle Hadoop me aata hai → cleaning/filtering → phir cleaned data RDBMS/Traditional DW me load hota hai.</li>
+        <li>Use-case: jab ETL heavy ho aur raw data temporary processing chahiye.</li>
+      </ul>
+      <pre>[Diagram Placeholder: Raw data -> Hadoop (staging/cleanup) -> RDBMS/DW]</pre>
+
+      <h3>Approach B — Parallel Platforms</h3>
+      <ul>
+        <li>Structured data aur Big Data separate platforms par rehte hain.</li>
+        <li>Hadoop parallel analytics ke liye; RDBMS reporting ke liye.</li>
+        <li>Integration limited ho sakti hai — users dono sides se queries run karte hain.</li>
+      </ul>
+      <pre>[Diagram Placeholder: RDBMS || Hadoop — parallel, separate]</pre>
+
+      <h3>Approach C — Best Synergy (Integrated)</h3>
+      <ul>
+        <li>Hadoop aur RDBMS dono milkar data management, staging, AND presentation handle karte hain.</li>
+        <li>Hadoop sirf staging nahi; large-scale processing, serving layer, aur even presentation layer support karta hai.</li>
+        <li><b>Conclusion:</b> Approach C generally best balance deta hai — scalability + integration.</li>
+      </ul>
+      <pre>[Diagram Placeholder: Unified flow (Hadoop ↔ RDBMS) with shared access]</pre>
+
+      <div class="tip"><b>Exam Tip:</b> Diagram banayein to Approach C ko center me rakhein; A aur B ko as alternatives mention karein.</div>
+    </section>
+
+    <section>
+      <h2>4. Corporate Data: Classification (Data Kis Tarah Ka Hai?)</h2>
+      <p class="muted">Company ke data ko classify karna zaroori hai taake architecture decide ho sake.</p>
+
+      <h3>A. Structured Data (Traditional)</h3>
+      <ul>
+        <li>Predictable format — fixed fields, rows & columns, relational DBMS friendly.</li>
+        <li>Examples: Sales records, transactions, invoices.</li>
+        <li>Traditional DW primarily isi data ko handle karta hai.</li>
+      </ul>
+
+      <h3>B. Unstructured & Semi-Structured Data (Big Data)</h3>
+      <ul>
+        <li><b>Unstructured:</b> No fixed schema (images, videos, free-text emails) — parsing aur NLP required.</li>
+        <li><b>Semi-Structured:</b> Tags/keys present (JSON, XML) lekin strict relational model nahi.</li>
+        <li>Big Data systems (Hadoop, NoSQL) inko efficiently store aur process karte hain.</li>
+      </ul>
+      <div class="tip"><b>Exam Tip:</b> Examples likh kar difference clear karo — structured = rows/columns; unstructured = media/text.</div>
+    </section>
+
+    <section>
+      <h2>5. Repetitiveness & Business Relevance (Critical Concept)</h2>
+      <p class="muted">Har data ka business value alag hota hai — exam me ye point aksar poocha jata hai.</p>
+
+      <h3>Repetitive Data</h3>
+      <ul>
+        <li>Machine-generated logs (call logs, server logs) — repeated, high-volume.</li>
+        <li>Analysis: Hadoop jaise tools best — batch processing, map-reduce style.</li>
+        <li>Relevance: Usually noisy — sirf small fraction business-useful hota hai.</li>
+      </ul>
+
+      <h3>Non-Repetitive Data</h3>
+      <ul>
+        <li>Unique human-generated content (emails, surveys, social posts).</li>
+        <li>Analysis: NLP aur semantic analysis chahiye to extract insights.</li>
+        <li>Relevance: High value — rich human insights.</li>
+      </ul>
+
+      <div class="tip"><b>Exam Tip:</b> Likho: "Big Data = bahut saara noise; valuable insights selective hote hain."</div>
+    </section>
+
+    <section>
+      <h2>6. Traditional DW Big Data ke liye Kyun Fail Hota Hai?</h2>
+      <p class="muted">Purana DW model kuch key areas me Big Data demands meet nahi karta — in differences ko samjho:</p>
+
+      <h3>ETL vs ELT</h3>
+      <ul>
+        <li><b>ETL (Traditional):</b> Extract → Transform → Load — pehle transform phir load.</li>
+        <li><b>ELT (Big Data):</b> Extract → Load → Transform — raw data pehle load karo, baad me transform karo (on-demand).</li>
+        <li>Reason: Volume aur velocity zyada, pehle transform karna infeasible/humble.</li>
+      </ul>
+
+      <h3>Schema</h3>
+      <ul>
+        <li>Traditional: Schema-on-write (pehle define karo).</li>
+        <li>Big Data: Schema-on-read (data pehle store karo, baad me interpret karo).</li>
+      </ul>
+
+      <h3>Real-time Requirements</h3>
+      <ul>
+        <li>Big Data systems real-time / near-real-time analytics chahte hain — traditional batch ETL isko support nahi karta.</li>
+      </ul>
+
+      <div class="tip"><b>Exam Tip:</b> Short table likho: ETL vs ELT, Schema-on-write vs Schema-on-read, Batch vs Real-time.</div>
+    </section>
+
+    <section>
+      <h2>7. Data Vault 2.0 (DV2)</h2>
+      <p class="muted">DV2 ek modern hybrid architecture hai jo Big Data aur Traditional DW concepts combine karta hai.</p>
+      <ul>
+        <li><b>Definition:</b> Flexible, scalable architecture combining normalized structures with agility for Big Data.</li>
+        <li><b>Agile Sprints:</b> Short sprints (2–3 weeks) — fast iterations.</li>
+        <li><b>Architecture:</b> Hadoop / NoSQL integrated for storage & processing.</li>
+        <li><b>Separation of Rules:</b>
+          <ul>
+            <li><b>Hard Rules:</b> Technical loading/processing rules (keep raw immutable).</li>
+            <li><b>Soft Rules:</b> Business interpretations / transformations — applied later.</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="tip"><b>Exam Tip:</b> Likho: "DV2 = agile + separation of concerns (raw vs business rules) — ideal for BDW."</div>
+    </section>
+
+    <section>
+      <h2>8. Comparison Table (Summary)</h2>
+      <p class="muted">Quick reference table — exam me short answer ke liye useful.</p>
+      <table>
+        <thead>
+          <tr><th>Feature</th><th>Traditional Data Warehouse</th><th>Big Data Warehouse (BDW)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><b>Goal (Maqsad)</b></td><td>Pre-designed reports; single source of truth</td><td>Data exploration; discover new insights</td></tr>
+          <tr><td><b>Methodology</b></td><td>Waterfall / structured</td><td>Agile / iterative</td></tr>
+          <tr><td><b>Data Sources</b></td><td>Known, structured</td><td>Unknown, diverse (structured + unstructured)</td></tr>
+          <tr><td><b>Cost & Scale</b></td><td>Scalability costly</td><td>Low-cost scalability (commodity HW)</td></tr>
+          <tr><td><b>Data Types</b></td><td>Structured only</td><td>Structured + Semi/Unstructured</td></tr>
+          <tr><td><b>Integrity</b></td><td>Centralized & strict</td><td>Distributed & loosely defined</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <details>
+      <summary>Quick Revision — Key Points (Collapsible)</summary>
+      <div style="padding-top:8px">
+        <ul>
+          <li>Gap = traditional DW vs BDW needs (volume, variety, velocity).</li>
+          <li>Approaches: Standalone (explore) vs Integrated (hybrid BDW).</li>
+          <li>Hybrid types: Hadoop-as-staging, Parallel platforms, Best-synergy integrated model.</li>
+          <li>Data classification: Structured vs Semi/Unstructured (NLP needed for text).</li>
+          <li>ETL -> ELT shift; Schema-on-read common in Big Data.</li>
+          <li>DV2 = modern hybrid architecture; separates hard & soft rules.</li>
+        </ul>
+      </div>
+    </details>
+
+    <footer>Prepared in Modern Roman Urdu — paste this HTML into a file and open in browser for a mobile-friendly dark-mode revision sheet.</footer>
+  </div>
+</body>
+</html>
